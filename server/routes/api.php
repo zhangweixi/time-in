@@ -25,10 +25,6 @@ $api->version('v1',['prefix'=>"api/v1",'namespace'=>'App\Http\Controllers\V1'],f
 
     $api->any('/user/{action}',     "UserController@action");
 
-    $api->any('/category/{action}', "CategoryController@action");
-
-    $api->any('/question/{action}', "QuestionController@action");
-
-    $api->any('/chart/{action}',    "ChartController@action");
+    $api->any('/task/{action}',    "TaskController@action");
 
 });
