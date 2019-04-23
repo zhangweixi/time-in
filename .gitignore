@@ -1,0 +1,4 @@
+server/storage/
+server/database/
+server/bootstrap/
+server/.idea/

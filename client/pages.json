@@ -1,0 +1,47 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style":{
+				"navigationBarTitleText":"时",
+				"h5":{
+					"titleNView":false
+				}
+			}
+		}
+	    ,{
+            "path" : "pages/history/history",
+            "style" : {
+				"navigationBarTitleText":"印",
+				"h5":{
+					"titleNView":false
+				}
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "时印",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"backgroundColor": "#eee",
+		"color": "#8a8a8a",
+		"selectedColor": "#1296db",
+		"list": [{
+				"text":"时",
+				"pagePath": "pages/index/index",
+				"iconPath": "static/img/tabbar/time.png",
+				"selectedIconPath": "static/img/tabbar/timeactive.png"
+			},
+			{
+				"text":"印",
+				"pagePath": "pages/history/history",
+				"iconPath": "static/img/tabbar/book.png",
+				"selectedIconPath": "static/img/tabbar/bookactive.png"
+			}
+		]
+	}
+}
