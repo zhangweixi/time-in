@@ -13,6 +13,7 @@
             "path" : "pages/history/history",
             "style" : {
 				"navigationBarTitleText":"印",
+				"enablePullDownRefresh":true,
 				"h5":{
 					"titleNView":false
 				}

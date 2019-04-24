@@ -17,14 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('v1')->middleware('userToken')->namespace('V1')->group(function($route){
 
-
-$api = app('Dingo\Api\Routing\Router');
-
-$api->version('v1',['prefix'=>"api/v1",'namespace'=>'App\Http\Controllers\V1'],function($api){
-
-    $api->any('/user/{action}',     "UserController@action");
-
-    $api->any('/task/{action}',    "TaskController@action");
-
+    $route->any('task/{action}',    "TaskController@action");
+    $route->any('user/{action}',    "UserController@action");
 });
