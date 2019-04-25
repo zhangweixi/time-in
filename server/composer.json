@@ -43,7 +43,7 @@
             "database/factories"
         ],
         "files":[
-            "app/common/function.php"
+            "app/Common/function.php"
         ]
     },
     "autoload-dev": {
