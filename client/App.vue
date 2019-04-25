@@ -1,7 +1,32 @@
 <script>
+	
+	import common from "common/common.js";
+	
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+			
+			//check this weixin mini app whether login
+			// #ifdef MP-WEIXIN
+			
+			if(!common.user.checkLogin()){
+				
+				console.log('user unlogin');
+				
+				uni.login({
+					provider:"weixin",
+					success:(res)=>{
+						
+						console.log('get login code');
+						console.log(res);
+						common.user.code = res.code;
+						
+						common.user.login(this);
+					}
+				})
+			}
+			// #endif
+			
 		},
 		onShow: function() {
 			console.log('App Show')

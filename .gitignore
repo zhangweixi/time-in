@@ -2,3 +2,5 @@ server/storage/
 server/database/
 server/bootstrap/
 server/.idea/
+client/unpackage/
+server/public/logs/

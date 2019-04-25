@@ -19,6 +19,14 @@
 				}
 			}
         }
+        ,{
+            "path" : "pages/login/login",
+            "style" : {
+				"h5":{
+					"titleNView":false
+				}
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

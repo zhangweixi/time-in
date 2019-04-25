@@ -1,5 +1,5 @@
 <template>
-	<view class="content" style="background-image: url('/static/img/common/bodybg.jpg');">
+	<view class="content">
 		<view class="flex"></view>
 		<view class="container">
 			
@@ -35,10 +35,13 @@
 					</view>
 				</view>
 				
-				<view class="addtype" v-show="adding == true">
-					<input type="text" placeholder="输入事件" v-model="newType">
-					<text v-on:click="addType">添加</text>
+				<view v-show="adding === true">
+					<view class="addtype" >
+						<input type="text" placeholder="输入事件" v-model="newType">
+						<text v-on:click="addType">添加</text>
+					</view>
 				</view>
+				
 			</view>
 		</view>
 		<view class="flex"></view>
@@ -68,10 +71,26 @@
 			}
 		},
 		onLoad() {
+						
+		},
+		onShow:function() {
 			
-			//获得自己的任务分类
-			this.getTaskType();
-			this.getCurrentTask();
+			common.user.toLogin();
+			
+			if(common.user.userId > 0 && this.taskTypes.length == 0){
+				
+				this.getTaskType();
+				this.getCurrentTask();
+				
+			}else{
+				setTimeout(()=>{
+					if(common.user.userId > 0 && this.taskTypes.length == 0)
+					{
+						this.getTaskType();
+						this.getCurrentTask();
+					}
+				},1000);
+			}
 		},
 		methods: {
 			openSetting:function(){
@@ -82,11 +101,13 @@
 			openAddType:function(){
 				this.adding = !this.adding;
 				this.setting = false;
+				
+				console.log(this.adding);
 			},
 			getTaskType:function(){
 				
 				var url 	= this.APIURL + "task/get_task_type";
-				var data 	= {userId:common.userId};
+				var data 	= {};
 				
 				common.request(url,data,(res)=>{
 					res = res.data;
@@ -358,6 +379,10 @@
 		left:0;
 		height:100%;
 		width:100%;
+		background-image: url('https://s3.ax2x.com/2019/04/25/bodybg.jpg');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
 		.flex{
 			flex:1;
 		}

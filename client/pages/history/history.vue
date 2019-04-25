@@ -56,8 +56,11 @@
 					uni.stopPullDownRefresh();
 					
 					if(tasks.length == 0){
+						
+						var msg = this.tasks.length == 0 ? "还没有记录哦" : "到底啦";
+						
 						uni.showToast({
-							title:"到底啦",
+							title:msg,
 							duration:2000,
 							icon:"none"
 						});
