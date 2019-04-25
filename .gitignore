@@ -1,5 +1,5 @@
 server/storage/
-server/bootstrap/
 server/.idea/
 client/unpackage/
 server/public/logs/
+server/bootstrap/cache/.gitignore
