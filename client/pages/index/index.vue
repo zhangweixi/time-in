@@ -54,6 +54,8 @@
 	export default {
 		data() {
 			return {
+				beginTime:0,
+				beginTimeer:null,
 				timearr:[10,10,'mid',10,10,'mid',10,10],
 				timeNum:0,
 				thingId:0,
@@ -71,30 +73,37 @@
 			}
 		},
 		onLoad() {
-						
-		},
-		onShow:function() {
+			
 			// #ifdef MP-WEIXIN
 			
-			common.user.toLogin();
-			
-			if(common.user.userId > 0 && this.taskTypes.length == 0){
+			this.beginTimeer = setInterval(()=>{
 				
-				this.getTaskType();
-				this.getCurrentTask();
+				this.beginTime += 500;
 				
-			}else{
-				setTimeout(()=>{
-					if(common.user.userId > 0 && this.taskTypes.length == 0)
-					{
-						this.getTaskType();
-						this.getCurrentTask();
-					}
-				},1000);
-			}
+				if(common.user.userId > 0 && this.taskTypes.length == 0){
+				
+					this.getTaskType();
+					this.getCurrentTask();
+					clearInterval(this.beginTimeer);
+					
+				}else if(this.beginTime > 2000){
+					
+					clearInterval(this.beginTimeer);
+					common.user.toLogin();
+				}
+								
+			},500)			
 			
 			// #endif
 			
+		},
+		onShow:function() {
+			
+			if(common.user.userId > 0 && this.taskTypes.length == 0){
+			
+				this.getTaskType();
+				this.getCurrentTask();
+			}
 		},
 		methods: {
 			openSetting:function(){

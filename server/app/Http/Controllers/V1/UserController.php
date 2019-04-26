@@ -50,7 +50,7 @@ class UserController extends Controller
 
         }else{
 
-            $userInfo->token = MUser::create_token(12,'mp_token');
+            $userInfo->token = MUser::create_token($userInfo->user_id,'mp_token');
 
             return \API::add('userInfo',$userInfo)->send();
         }

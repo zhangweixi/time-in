@@ -68,7 +68,7 @@ var user = {
 				uni.navigateTo({url:"/pages/login/login"});
 			}
 			
-		},2000);
+		},1000);
 	}
 	
 }

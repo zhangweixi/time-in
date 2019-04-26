@@ -41,7 +41,7 @@
 							head:userInfo.avatarUrl,
 							nickName:userInfo.nickName,
 							client:'wxmp',
-							mpOpenid:this.openid
+							mpOpenid:common.user.openid
 						};
 						
 						uni.request({
