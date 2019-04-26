@@ -103,6 +103,16 @@
 						{
 							common.request(url,data,(res)=>
 							{
+								if(res.data.code != 200){
+									
+									return uni.showToast({
+										title:res.data.msg,
+										icon:"none"
+									});
+									
+									return;
+								}
+								
 								//从列表中删除
 								var i = 0;
 								for(var task of this.tasks){

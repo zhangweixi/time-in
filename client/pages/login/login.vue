@@ -35,12 +35,13 @@
 						var url = this.APIURL + 'user/register';
 						var userInfo = info.userInfo;
 						
+						
 						var data = {
 							sex:userInfo.gender,
 							head:userInfo.avatarUrl,
 							nickName:userInfo.nickName,
-							mpOpenid:common.user.openid,
-							client:'wxmp'
+							client:'wxmp',
+							mpOpenid:this.openid
 						};
 						
 						uni.request({
@@ -56,6 +57,10 @@
 								uni.navigateBack({
 									delta: 1
 								});
+							},
+							complete: (res) => {
+								
+								
 							}
 						})
 					}

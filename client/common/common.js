@@ -1,5 +1,9 @@
 var userId = 1;
-
+var log = function(msg){
+	uni.showToast({
+		title:msg
+	})
+}
 var user = {
 	userId:0,
 	code:'',
@@ -8,14 +12,15 @@ var user = {
 	openid:null,
 	checkLogin:function(){
 		
-		if(this.userId > 0){
+		if(this.userId > 0)
+		{
 			return true;
 		}
 		
 		//检查缓存中是否有
 		const uinfo = uni.getStorageSync('userInfo');
+		
 		if(uinfo){
-			
 			this.userId = uinfo.userId;
 			this.info 	= uinfo;
 			this.token 	= uinfo.token;
@@ -24,13 +29,6 @@ var user = {
 		}
 		
 		return false;
-		
-		uni.navigateTo({
-			url: '/pages/login/login',
-			success: res => {},
-			fail: () => {},
-			complete: () => {}
-		});
 	},
 	login:function(app){
 		
@@ -61,12 +59,16 @@ var user = {
 	},
 	toLogin:function(){
 		setTimeout(()=>{
-			
+
 			if(this.checkLogin()){
-				return true;
+				
+				uni.navigateTo({url:"/pages/index/index"});
+				
+			}else{
+				uni.navigateTo({url:"/pages/login/login"});
 			}
-			uni.navigateTo({url:"/pages/login/login"});
-		},1000);
+			
+		},2000);
 	}
 	
 }
@@ -87,5 +89,6 @@ var request = function(url,data,callback){
 export default{
 	user,
 	userId,
-	request
+	request,
+	log
 }

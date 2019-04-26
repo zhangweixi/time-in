@@ -162,6 +162,13 @@ class TaskController extends Controller
 
         $taskId     = $request->input('taskId');
 
+        $taskInfo   = TaskModel::find($taskId);
+
+        if(is_null($taskInfo->deleted_at)){
+
+            return \API::send(2001,"本任务未结束");
+        }
+
         TaskModel::where('task_id',$taskId)->delete();
 
         return \API::send();

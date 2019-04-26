@@ -10,17 +10,12 @@
 			// #ifdef MP-WEIXIN
 			
 			if(!common.user.checkLogin()){
-				
-				console.log('user unlogin');
-				
+
 				uni.login({
 					provider:"weixin",
 					success:(res)=>{
 						
-						console.log('get login code');
-						console.log(res);
 						common.user.code = res.code;
-						
 						common.user.login(this);
 					}
 				})

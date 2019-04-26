@@ -74,6 +74,7 @@
 						
 		},
 		onShow:function() {
+			// #ifdef MP-WEIXIN
 			
 			common.user.toLogin();
 			
@@ -91,6 +92,9 @@
 					}
 				},1000);
 			}
+			
+			// #endif
+			
 		},
 		methods: {
 			openSetting:function(){
@@ -101,8 +105,6 @@
 			openAddType:function(){
 				this.adding = !this.adding;
 				this.setting = false;
-				
-				console.log(this.adding);
 			},
 			getTaskType:function(){
 				
@@ -379,7 +381,10 @@
 		left:0;
 		height:100%;
 		width:100%;
-		background-image: url('https://s3.ax2x.com/2019/04/25/bodybg.jpg');
+		// background-image: url('https://s3.ax2x.com/2019/04/25/bodybg.jpg');
+		// background-image: url('https://sjbz-fd.zol-img.com.cn/t_s320x510c/g5/M00/00/04/ChMkJlfJWC-If53TAAGlTXZi4ZwAAU-IwBQ1IMAAaVl175.jpg');
+		background-image: url('https://sjbz-fd.zol-img.com.cn/t_s320x510c/g5/M00/00/03/ChMkJlfJVpuIBfQ_AASHoiqopRYAAU9_ABjB_gABIe6737.jpg');
+		
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -510,11 +515,9 @@
 				background:#1296DB;
 				color:#fff;
 				font-size:20upx;
-				border:1px solid #1296DB;
+				// border:1px solid #1296DB;
 				text-align: center;
 				vertical-align:middle;
-				padding-top:13upx;
-				padding-bottom:13upx;
 			}
 		}
 	}
