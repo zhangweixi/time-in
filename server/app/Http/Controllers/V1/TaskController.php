@@ -169,7 +169,7 @@ class TaskController extends Controller
 
         $taskInfo   = TaskModel::find($taskId);
 
-        if(is_null($taskInfo->deleted_at)){
+        if(is_null($taskInfo->finished_at)){
 
             return \API::send(2001,"本任务未结束");
         }
