@@ -71,13 +71,25 @@ class UserController extends Controller
 
         $unionId    = $request->input('unionid','');
 
-        $userInfo   = MUser::create_user(['unionid'=>$unionId,'mp_openid'=>$mpOpenid,'head'=>$head,'sex'=>$sex,'nick_name'=>$nickname]);
+         //检查用户是否存在
+        $userInfo  = MUser::get_mp_info($mpOpenid);
+        
+        if(!$userInfo){
+
+            $newInfo = [
+                'unionid'=>$unionId,
+                'mp_openid'=>$mpOpenid,
+                'head'=>$head,
+                'sex'=>$sex,
+                'nick_name'=>$nickname
+            ];
+            $userInfo   = MUser::create_user($newInfo);
+            TaskModel::init_task($userInfo->user_id);   //初始化几个常用任务
+        }
 
         $types      = ["wxmp"=>"mp_token"];
 
         $userInfo->token    = MUser::create_token($userInfo->user_id,$types[$client]);
-
-        TaskModel::init_task($userInfo->user_id);   //初始化几个常用任务
 
         return \API::add('userInfo',$userInfo)->send();
     }
