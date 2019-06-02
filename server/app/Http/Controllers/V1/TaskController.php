@@ -138,7 +138,7 @@ class TaskController extends Controller
 
         $taskInfo   = TaskModel::where('user_id',$userId)->whereNull('finished_at')->first();
 
-        if($taskInfo->status == 1){
+        if($taskInfo && $taskInfo->status == 1){
 
             $taskInfo->time = $taskInfo->time + (time() - strtotime($taskInfo->updated_at));
 
