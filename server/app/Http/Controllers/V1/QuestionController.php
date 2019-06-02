@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
@@ -108,10 +109,10 @@ class QuestionController extends Controller
     /*
      *
      * */
-    public function get_quest(){
+    public function get_quest(Request $request){
 
-        $groupId    = 4;
-        $questId    = 3;
+        $groupId    = $request->input("groupId");
+        $questId    = $request->input('questId');
 
         if($questId > 0){ //如果指定了一个题，那就获取下一个，否则就获取第一个
 
