@@ -8,10 +8,18 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
+    public function get_code($userId){
 
-    public function add_quest_group(){
+        $str = md5(date('Ymd').$userId);
 
-        $userId     = 10;
+        return substr($str,0,2).substr($str,-2).str_pad($userId,5,0);
+    }
+
+    public function add_quest_group(Request $request){
+        $code       = $request->input('code');
+        $title      = $request->input('title');
+        $userId     = substr($code,strlen($code)-5);
+        echo $userId;exit;
         $title      = "测试题库";
         $category   = "英语";
 
@@ -102,7 +110,7 @@ class QuestionController extends Controller
 
         $userId     = 10;
         $questList  = DB::table('quest_group')->where('user_id',$userId)->get();
-        dd($questList);
+
         return \API::add('questGroup',$questList)->send();
     }
 
