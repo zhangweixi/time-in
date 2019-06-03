@@ -101,7 +101,7 @@
 					}else{
 						
 						uni.redirectTo({
-							url:"../end/end/end"
+							url:"../end/end"
 						})
 					}
 				});

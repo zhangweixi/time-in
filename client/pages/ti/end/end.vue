@@ -5,13 +5,13 @@
 		</view>
 		
 		<view class="review" v-on:click="review(0)">复习错误</view>
-		<view class="review" v-on:click="review(2)">全部复习</view>
+		<view class="review" v-on:click="review(2)">复习全部</view>
 	</view>
 </template>
 
 <script>
 	
-	import common from '../../../../common/common.js';
+	import common from '../../../common/common.js';
 	
 	
 	export default {

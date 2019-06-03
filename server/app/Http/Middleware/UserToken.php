@@ -24,7 +24,7 @@ class UserToken
                 $request->offsetSet('userId',$userId);
             }
         }
-        $request->offsetSet('userId',34);
+        //$request->offsetSet('userId',34);
         return $next($request);
     }
 }

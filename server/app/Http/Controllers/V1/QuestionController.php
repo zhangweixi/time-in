@@ -43,8 +43,8 @@ class QuestionController extends Controller
         $code       = $request->input('code');
         $title      = $request->input('title');
         $userId     = self::parse_code($code);
-        $content    = $request->input('content');
-
+        $content    = base64_decode($request->input('content'));
+        $content    = explode("\n",$content);
         $category   = "英语";
 
         if($userId === false){
@@ -52,7 +52,6 @@ class QuestionController extends Controller
             return \API::send(2002,"code无效");
         }
 
-        $content    = file("C:\Users\Administrator\Desktop\\test.md");
         $questions  = [];
         $i          = -1;
         $lettles    = [",","，",".","。",";","；"];
@@ -111,6 +110,7 @@ class QuestionController extends Controller
             }
         }
 
+
         //将题目存储在数据库
         $groupId = DB::table('quest_group')->insertGetId([
             "user_id"   => $userId,
@@ -139,8 +139,9 @@ class QuestionController extends Controller
 
         $userId     = $request->input('userId');
         $questList  = DB::table('quest_group')->where('user_id',$userId)->get();
-
-        return \API::add('questGroup',$questList)->send();
+        $code       = self::make_code($userId);
+        $url        = "http://api.launchever.cn/timein/www/addquestion/";
+        return \API::add('questGroup',$questList)->add('code',$code)->add('url',$url)->send();
     }
 
     /*

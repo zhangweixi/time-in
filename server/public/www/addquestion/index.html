@@ -52,7 +52,7 @@
 
 <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="editormd.min.js"></script>
-
+<script src="base64.js"></script>
 <script type="text/javascript">
     $(function() {
         var editor = editormd("editor", {
@@ -72,11 +72,28 @@
             if(!confirm('确定提交吗')){
                 return;
             }
-
-            var content = editor.getMarkdown();
+            var b = new Base64();
+            var content = b.encode(editor.getMarkdown());
             var title   = $('#title').val();
             var code    = $('#code').val();
-            var url     = "/"
+            var url     = "/api/v1/quest/add_quest_group";
+
+            var data    = {
+                content:content,
+                code:code,
+                title:title
+            };
+
+            $.ajax({
+                url:url,
+                data:data,
+                mehod:'post',
+                success:function(res){
+                    if(res.code == 200){
+                        alert('添加成功，请在手机上查看');
+                    }
+                }
+            })
         });
 
     });
