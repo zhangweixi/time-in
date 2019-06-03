@@ -101,7 +101,7 @@
 					}else{
 						
 						uni.redirectTo({
-							url:"../end/end"
+							url:"../end/end?id="+this.groupId
 						})
 					}
 				});
@@ -152,6 +152,7 @@
 				
 			},
 			saveAnswer:function(answer,result){
+				
 				
 				var url 	= this.APIURL + "quest/save_answer";
 				var data 	= {questId:this.questId,groupId:this.groupId,answer:answer,result:result};

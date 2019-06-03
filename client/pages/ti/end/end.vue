@@ -44,7 +44,7 @@
 				
 				common.request(url,data,(res)=>{
 					uni.redirectTo({
-						url:"../../da/da?id="+this.groupId+"&review=1"
+						url:"../da/da?id="+this.groupId+"&review=1"
 					})
 				})
 			}
