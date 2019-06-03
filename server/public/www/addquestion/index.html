@@ -40,9 +40,9 @@
 
 <div class="nav">
     <div class="title">题库导入</div>
-    <input type="text" placeholder="题库名称">
-    <input type="text" placeholder="CODE编码">
-    <div class="btn">提交</div>
+    <input type="text" placeholder="题库名称" id="title">
+    <input type="text" placeholder="CODE编码" id="code">
+    <div class="btn" id="submit">提交</div>
 </div>
 
 <div id="editor">
@@ -62,9 +62,28 @@
             placeholder:"请输入你的题库内容。。。。。。",
             //previewTheme : "dark",
             editorTheme : "pastel-on-dark",
+            saveHTMLToTextarea:true,
             path   : "lib/"
         });
+
+
+        $("#submit").bind('click', function() {
+
+            if(!confirm('确定提交吗')){
+                return;
+            }
+
+            var content = editor.getMarkdown();
+            var title   = $('#title').val();
+            var code    = $('#code').val();
+            var url     = "/"
+        });
+
     });
+
+
+
+
 </script>
 </body>
 </html>
