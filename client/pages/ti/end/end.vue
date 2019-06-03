@@ -17,13 +17,13 @@
 	export default {
 		data() {
 			return {
-				groupId:5,
+				groupId:0,
 				results:[]
 			};
 		},
 		onLoad(option) {
 			
-			//this.groupId = option.id;
+			this.groupId = option.id;
 			
 			this.getResult();
 			
