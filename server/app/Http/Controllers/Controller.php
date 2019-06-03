@@ -19,8 +19,8 @@ class Controller extends BaseController
             return $this->$action($request);
 
         }else{
-
-            //404
+            return response('',404);
+            return \API::send(404,"找不到对应的资源");
         }
     }
 }

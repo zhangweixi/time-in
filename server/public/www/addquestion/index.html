@@ -1,0 +1,70 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/editormd.css" />
+    <style>
+        body,html{
+            margin:0;
+            padding:0;
+            background:#444;
+        }
+
+        .nav{
+            background:#444;
+            color:#fff;
+            padding:10px 0;
+        }
+        .nav *{
+            display: inline-block;
+        }
+        .title{
+            font-size:20px;
+            font-weight:bold;
+            padding:5px 10px;
+        }
+        .nav input{
+            text-indent:10px;
+            line-height:1.5;
+        }
+        .btn{
+            border-radius: 5px;
+            background:red;
+            padding:5px 20px;
+            cursor: default;
+        }
+        #editor{
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav">
+    <div class="title">题库导入</div>
+    <input type="text" placeholder="题库名称">
+    <input type="text" placeholder="CODE编码">
+    <div class="btn">提交</div>
+</div>
+
+<div id="editor">
+    <textarea style="display:none;"></textarea>
+</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="editormd.min.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        var editor = editormd("editor", {
+             width  : window.innerWidth-50+"px",
+            // height : "100%",
+            theme : "dark",
+            placeholder:"请输入你的题库内容。。。。。。",
+            //previewTheme : "dark",
+            editorTheme : "pastel-on-dark",
+            path   : "lib/"
+        });
+    });
+</script>
+</body>
+</html>

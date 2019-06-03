@@ -23,6 +23,10 @@
 		onShow() {
 			
 		},
+		onPullDownRefresh() {
+			
+			this.getTiList();
+		},
 		methods:{
 			getTiList:function(){
 				var url = this.APIURL + "quest/get_quest_group";

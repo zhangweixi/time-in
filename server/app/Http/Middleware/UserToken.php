@@ -16,18 +16,15 @@ class UserToken
      */
     public function handle($request, Closure $next)
     {
-        $token  = $request->input('token',0);
+        $token  = $request->input('token',"");
         if($token){
             $userId = DB::table('token')->where('mp_token',$token)->value('user_id');
-            mylogger($userId);
             if($userId){
 
                 $request->offsetSet('userId',$userId);
-
-
             }
         }
-
+        $request->offsetSet('userId',34);
         return $next($request);
     }
 }

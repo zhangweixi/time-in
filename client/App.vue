@@ -5,7 +5,7 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			return ;
+			//return ;
 			//check this weixin mini app whether login
 			// #ifdef MP-WEIXIN
 			
@@ -21,7 +21,6 @@
 				})
 			}
 			// #endif
-			
 		},
 		onShow: function() {
 			console.log('App Show')
