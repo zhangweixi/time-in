@@ -79,13 +79,14 @@ class QuestionController extends Controller
 
                     $isJieda    =  true;
                     $questions[$i]["type"]   = "JD";
+                    $questions[$i]['title']  = mb_substr($questions[$i]['title'],0,-3);
                 }
 
             }else{
 
                 if($isJieda == true){ //如果是解答题，只需将答案汇集在一起就行
 
-                    $questions[$i]["answer"] .= $str;
+                    $questions[$i]["answer"] .= $str."\n";
                     continue;
                 }
 
@@ -105,7 +106,7 @@ class QuestionController extends Controller
                     $str        = mb_substr($str,0,-1); //删除符号标记
                 }
 
-                $questions[$i]["options"][] = ["content"=>$str,"isRight"=>$isRight];
+                $questions[$i]["options"][] = ["content"=>trim(trim(trim($str),'-')),"isRight"=>$isRight];
                 $ansth++;
             }
         }

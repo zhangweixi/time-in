@@ -3,7 +3,7 @@
 		<view class="title">{{question.title}}</view>
 		
 		
-		<view class="detail" v-if="showAnswer == true && question.desc">{{question.desc}}</view>
+		<view class="detail" v-if="showAnswer == true && question.desc"><text>{{question.desc}}</text></view>
 		
 		<view class="flex"></view>
 		
@@ -24,7 +24,7 @@
 		</view>
 		
 	
-		<view class="btns bottom left" v-if="question.type == 'JD'">
+		<view class="btns bottom" v-if="question.type == 'JD'">
 			<view class="b1" v-on:click="answer_jd(-1)">重来</view>
 			<view class="b2" v-on:click="answer_jd(0)">困难</view>
 			<view class="b3" v-on:click="answer_jd(1)">一般</view>
@@ -273,7 +273,7 @@
 		}
 	}
 	
-	.bottom1{
+	.bottom{
 		display: flex;
 		bottom: 0;
 		left:0;
