@@ -22,5 +22,6 @@ Route::prefix('v1')->middleware('userToken')->namespace('V1')->group(function($r
     $route->any('task/{action}',    "TaskController@action");
     $route->any('user/{action}',    "UserController@action");
     $route->any('quest/{action}',   "QuestionController@action");
+    $route->any('doctor/{action}',  "DoctorController@action");
 
 });
