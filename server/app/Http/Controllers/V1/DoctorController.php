@@ -33,7 +33,7 @@ class DoctorController extends Controller
         $cmd = "source activate ts &&python ".public_path("img.py") . " " . storage_path("app/".$img) . " quick";
         $cmd = str_replace("\\","/",$cmd);
 
-        //shell_exec($cmd);
+        shell_exec($cmd);
 
         //3.保存数据库
         $imgId = DB::table("doc_img")->insertGetId(["pid"=>$pid,"img"=>$img]);
