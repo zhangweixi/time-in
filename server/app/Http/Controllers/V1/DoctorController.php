@@ -30,7 +30,7 @@ class DoctorController extends Controller
 
 
         //2.二值化图片
-        $cmd = "source activate ts &&python ".public_path("img.py") . " " . storage_path("app/".$img) . " quick";
+        $cmd = "source activate ts &&python ".public_path("img.py") . " " . storage_path("app/".$img) . " high";
         $cmd = str_replace("\\","/",$cmd);
 
         shell_exec($cmd);
