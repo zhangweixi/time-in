@@ -30,14 +30,15 @@ class DoctorController extends Controller
 
 
         //2.二值化图片
-        $cmd = "activate ts &&python ".public_path("img.py") . " " . storage_path("app/".$img) . " quick";
+        $cmd = "source activate ts &&python ".public_path("img.py") . " " . storage_path("app/".$img) . " quick";
         $cmd = str_replace("\\","/",$cmd);
+
         shell_exec($cmd);
 
         //3.保存数据库
         $imgId = DB::table("doc_img")->insertGetId(["pid"=>$pid,"img"=>$img]);
 
-        return \API::add('imgId',$imgId)->add("img",url($img))->send();
+        return \API::add('imgId',$imgId)->add("img",url($img))->add('cmd',$cmd)->send();
     }
 
     public function delete_img(Request $request)

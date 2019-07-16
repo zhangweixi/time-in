@@ -4,10 +4,15 @@ import os
 import pdfkit
 import sys
 
+
 def handimg1(threshold, img, res):
-    temp = Image.open(img)
-    Img = temp.convert('L')
     #threshold = 95
+    temp = Image.open(img)
+    (w,h) = temp.size
+    w = int(w/2)
+    h = int(h/2)
+    Img = temp.convert('L')
+    
     table = []
     for i in range(256):
         if i < threshold:
@@ -16,6 +21,11 @@ def handimg1(threshold, img, res):
             table.append(1)
     photo = Img.point(table, '1')
     photo.save(res)
+    temp2 = Image.open(res)
+    out = temp2.resize((w,h),Image.ANTIALIAS)
+    out.save(res)
+
+
 
 # 正在使用的方法
 def handimg2(threshold, img, res):
