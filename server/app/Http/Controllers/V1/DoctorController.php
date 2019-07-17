@@ -22,7 +22,6 @@ class DoctorController extends Controller
      * */
     public function upload(Request $request)
     {
-        return url('index');
         $pid    = $request->input('pid');
         $img    = $request->file('img');
 
@@ -39,7 +38,10 @@ class DoctorController extends Controller
         //3.保存数据库
         $imgId = DB::table("doc_img")->insertGetId(["pid"=>$pid,"img"=>$img]);
 
-        return \API::add('imgId',$imgId)->add("img",url($img))->add('cmd',$cmd)->send();
+        return \API::add('imgId',$imgId)
+            ->add("img",config('app.url')."/storage/".$img)
+            //->add('cmd',$cmd)
+            ->send();
     }
 
     public function delete_img(Request $request)
