@@ -3,10 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <META   HTTP-EQUIV="Pragma"   CONTENT="no-cache">
-    <meta name=“viewport” content=“initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width”   />
-    <meta name=“format-detection” content=“telephone=no” />
-    <meta name=“app-mobile-web-app-capable”  content=“yes" />
-    <meta name=“app-mobile-web-app-status-bar-style” content=“black-translucent” />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width"   />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="app-mobile-web-app-capable"  content="yes" />
+    <meta name="app-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <title>精美的表格样式</title>
     <style type="text/css">
@@ -89,8 +89,8 @@
 </div>
 <table width="90%" id="mytab"  border="1" class="t1">
     <thead>
-    <th width="50">#</th>
-    <th width="100">PET号</th>
+    <th >#</th>
+    <th >PET号</th>
     <th >内容</th>
     <th >创建时间</th>
     <th>诊断记录</th>
