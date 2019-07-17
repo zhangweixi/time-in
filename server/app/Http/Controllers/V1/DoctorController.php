@@ -59,10 +59,18 @@ class DoctorController extends Controller
         $pid    = $request->input('pid');
 
         //合成PDF
-        for($i=0;$i<5;$i++){
-            sleep(1);
-        }
+
         return \API::add('pid',$pid)->send();
     }
 
+    public function preview(Request $request)
+    {
+        $pid    = $request->input('pid');
+        $imgs   = DB::table('doc_img')->where('pid',$pid)->select()->get();
+        foreach($imgs as $img){
+            $img->img = config("app.url")."/storage/".$img->img;
+            //$img->img = config("app.url")."/".$img->img;
+        }
+        return view('doctor/pdf',["imgs"=>$imgs]);
+    }
 }
