@@ -139,7 +139,7 @@ class DoctorController extends Controller
         $context = stream_context_create($options);
         $result = file_get_contents($api, false, $context);
         // 错误码链接：https://www.xfyun.cn/document/error-code (code返回错误码时必看)
-
+        mylogger($result);
         return $this->parse_result($result);
     }
 
