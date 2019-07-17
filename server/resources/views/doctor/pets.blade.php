@@ -2,6 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <META   HTTP-EQUIV="Pragma"   CONTENT="no-cache">
+    <meta name=“viewport” content=“initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width”   />
+    <meta name=“format-detection” content=“telephone=no” />
+    <meta name=“app-mobile-web-app-capable”  content=“yes" />
+    <meta name=“app-mobile-web-app-status-bar-style” content=“black-translucent” />
+
     <title>精美的表格样式</title>
     <style type="text/css">
         <!--
