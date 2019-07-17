@@ -71,7 +71,7 @@ class DoctorController extends Controller
     {
         $pid    = $request->input('pid');
         //检查是否已存在
-        $has    = DB::table('doc_pet')->where('pid',$pid)->has();
+        $has    = DB::table('doc_pet')->where('pid',$pid)->first();
 
         if($has){
             return \API::send(2001,"该PET号已处理过");
