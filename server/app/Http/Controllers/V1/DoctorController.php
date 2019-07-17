@@ -176,4 +176,28 @@ class DoctorController extends Controller
         }
         return view('doctor/pdf',["imgs"=>$imgs]);
     }
+
+    public function pets(Request $request)
+    {
+        $keywords = trim($request->input("keywords",""));
+        if($keywords){
+            $pets = DB::table('doc_pet')->where('content','like',"%".$keywords."%")->paginate(20);
+        }else{
+            $pets = DB::table('doc_pet')->paginate(20);
+        }
+
+
+        foreach($pets as $pet){
+            $pet->content = str_replace("\n","<br/>",$pet->content);
+        }
+        return view("doctor/pets",['pets'=>$pets,"keywords"=>$keywords]);
+    }
+    public function deletePet(Request $request){
+
+        $id     = $request->input('pid');
+        DB::table('doc_pet')->where('pid',$id)->delete();
+        DB::table('doc_img')->where('pid',$id)->delete();
+
+        return \API::send();
+    }
 }
