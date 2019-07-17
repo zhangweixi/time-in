@@ -54,5 +54,15 @@ class DoctorController extends Controller
         return \API::send();
     }
 
+    public function submitPet(Request $request)
+    {
+        $pid    = $request->input('pid');
+
+        //合成PDF
+        for($i=0;$i<5;$i++){
+            sleep(1);
+        }
+        return \API::add('pid',$pid)->send();
+    }
 
 }
