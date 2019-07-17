@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 class DoctorController extends Controller
@@ -47,7 +48,9 @@ class DoctorController extends Controller
     public function delete_img(Request $request)
     {
         $id     = $request->input('imgId');
+        $imgInfo= DB::table('doc_img')->where('id',$id)->first();
         DB::table('doc_img')->where('id',$id)->delete();
+        Storage::disk()->delete($imgInfo->img);
         return \API::send();
     }
 
