@@ -8,7 +8,7 @@
     <meta name="app-mobile-web-app-capable"  content="yes" />
     <meta name="app-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <title>精美的表格样式</title>
+    <title></title>
     <style type="text/css">
         <!--
         body,table{
