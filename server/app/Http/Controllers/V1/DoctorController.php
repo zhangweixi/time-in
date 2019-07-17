@@ -22,6 +22,7 @@ class DoctorController extends Controller
      * */
     public function upload(Request $request)
     {
+        return url('index');
         $pid    = $request->input('pid');
         $img    = $request->file('img');
 
