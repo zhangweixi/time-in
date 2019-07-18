@@ -172,7 +172,7 @@
     </thead>
     @foreach($pets as $key => $pet)
     <tr class="a1">
-        <td>{{$key+1}}</td>
+        <td>{{($pets->currentPage() -1) * 20 + $key+1}}</td>
         <td>{{$pet->pid}}</td>
         <td><div style="padding:5px;">{!! $pet->content !!}</div></td>
         <td>{{$pet->created_at}}</td>
