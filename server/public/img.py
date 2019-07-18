@@ -9,11 +9,7 @@ def handimg1(threshold, img, res):
     #threshold = 95
     temp = Image.open(img)
     (w,h) = temp.size
-
-    #w = int(w/2)
-    #h = int(h/2)
     Img = temp.convert('L')
-    
     table = []
     for i in range(256):
         if i < threshold:
@@ -22,9 +18,12 @@ def handimg1(threshold, img, res):
             table.append(1)
     photo = Img.point(table, '1')
     photo.save(res)
-    #temp2 = Image.open(res)
-    #out = temp2.resize((w,h),Image.ANTIALIAS)
-    #out.save(res)
+    if w > 1000 :
+        h = int(h/(w/1000))
+        w = 1000
+        temp2 = Image.open(res)
+        out = temp2.resize((w,h),Image.ANTIALIAS)
+        out.save(res)
 
 
 
