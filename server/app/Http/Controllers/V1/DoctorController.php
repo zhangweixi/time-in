@@ -57,6 +57,7 @@ class DoctorController extends Controller
         return \API::send();
     }
 
+
     public function checkHasPet(Request $request){
 
         $pid    = $request->input('pid');
@@ -189,15 +190,20 @@ class DoctorController extends Controller
             $pets = DB::table('doc_pet')->paginate(20);
         }
 
-
         foreach($pets as $pet){
             $pet->content = str_replace("\n","<br/>",$pet->content);
         }
         return view("doctor/pets",['pets'=>$pets,"keywords"=>$keywords]);
     }
-    public function deletePet(Request $request){
 
+    public function deletePet(Request $request)
+    {
         $id     = $request->input('pid');
+        $imgs   = DB::table('doc_img')->where('pid',$id)->get();
+        foreach($imgs as $img)
+        {
+            Storage::disk()->delete($img->img);
+        }
         DB::table('doc_pet')->where('pid',$id)->delete();
         DB::table('doc_img')->where('pid',$id)->delete();
 
