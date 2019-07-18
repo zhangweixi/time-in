@@ -75,7 +75,7 @@ class DoctorController extends Controller
     {
         $pid    = $request->input('pid');
         //检查是否已存在
-        $has    = DB::table('doc_pet')->where('pid',$pid)->orderBy('sort')->first();
+        $has    = DB::table('doc_pet')->where('pid',$pid)->first();
 
         if($has){
             return \API::send(2001,"该PET号已处理过");
@@ -83,7 +83,7 @@ class DoctorController extends Controller
         //合成PDF
 
         //进行图片识别
-        $img        = DB::table('doc_img')->where('pid',$pid)->orderBy('id')->first();
+        $img        = DB::table('doc_img')->where('pid',$pid)->orderBy('sort')->first();
         $imgpath    = storage_path("app/".$img->img);
         $petInfo    = $this->xfyun($imgpath);
         //$petInfo    = $this->parse_result();
