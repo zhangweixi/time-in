@@ -85,7 +85,7 @@ if __name__ == "__main__":
     if sys.argv[2] == "quick": 
         handimg1(90,img,img) # 快速预览
     else:
-        handimg2(150,img,img)
+        handimg2(110,img,img)
 
 
 
