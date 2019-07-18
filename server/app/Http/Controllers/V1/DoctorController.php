@@ -25,6 +25,9 @@ class DoctorController extends Controller
     {
         $pid    = $request->input('pid');
         $img    = $request->file('img');
+        $sort   = $request->input('sort',0);
+
+
 
         //1.保存图片
         $img   = $img->storeAs("doctor/".$pid,time().".".$img->getClientOriginalExtension());
@@ -37,7 +40,7 @@ class DoctorController extends Controller
         shell_exec($cmd);
 
         //3.保存数据库
-        $imgId = DB::table("doc_img")->insertGetId(["pid"=>$pid,"img"=>$img]);
+        $imgId = DB::table("doc_img")->insertGetId(["pid"=>$pid,"img"=>$img,'sort'=>$sort]);
 
         return \API::add('imgId',$imgId)
             ->add("img",config('app.url')."/storage/".$img)
@@ -71,7 +74,7 @@ class DoctorController extends Controller
     {
         $pid    = $request->input('pid');
         //检查是否已存在
-        $has    = DB::table('doc_pet')->where('pid',$pid)->first();
+        $has    = DB::table('doc_pet')->where('pid',$pid)->orderBy('sort')->first();
 
         if($has){
             return \API::send(2001,"该PET号已处理过");
