@@ -38,7 +38,7 @@ def handimg2(threshold, img, res):
 
     newimg = Image.fromarray(img)
     newimg.save(res)
-    #resize_img(res)
+    resize_img(res)
     
 
 def resize_img(imgFile):
