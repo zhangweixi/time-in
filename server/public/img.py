@@ -8,7 +8,6 @@ import sys
 def handimg1(threshold, img, res):
     #threshold = 95
     temp = Image.open(img)
-    (w,h) = temp.size
     Img = temp.convert('L')
     table = []
     for i in range(256):
@@ -18,19 +17,15 @@ def handimg1(threshold, img, res):
             table.append(1)
     photo = Img.point(table, '1')
     photo.save(res)
-    if w > 1000 :
-        h = int(h/(w/1000))
-        w = 1000
-        temp2 = Image.open(res)
-        out = temp2.resize((w,h),Image.ANTIALIAS)
-        out.save(res)
+    resize_img(res)
+   
 
 
 
 # 正在使用的方法
 def handimg2(threshold, img, res):
-
-    img = np.array(Image.open(img).convert('L'))
+    temp = Image.open(img)
+    img = np.array(temp.convert('L'))
     rows, cols = img.shape
 
     for i in range(rows):
@@ -43,7 +38,17 @@ def handimg2(threshold, img, res):
 
     newimg = Image.fromarray(img)
     newimg.save(res)
+    resize_img(res)
+    
 
+def resize_img(imgFile):
+    img = Image.open(imgFile)
+    (w, h) = img.size
+    if w > 1000 :
+        h = int(h/(w/1000))
+        w = 1000
+        out = img.resize((w,h),Image.ANTIALIAS)
+        out.save(imgFile)
 
 def create_pdf(imgpath):
     body = """  <html>  <head>  <meta name="pdfkit-page-size" content="Legal"/>  <meta name="pdfkit-orientation" content="Landscape"/>  </head>  <body>"""
