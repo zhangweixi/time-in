@@ -132,7 +132,7 @@
         td{
             text-align: center;
         }
-        
+
         td div{
             text-align: left;
         }
@@ -171,7 +171,6 @@
 </div>
 <table width="90%" id="mytab"  border="1" class="t1">
     <thead>
-        <th>#</th>
         <th>PET号</th>
         <th>姓名</th>
         <th>身份证</th>
@@ -183,7 +182,7 @@
     </thead>
     @foreach($pets as $key => $pet)
     <tr class="a1">
-        <td>{{($pets->currentPage() -1) * 20 + $key+1}}</td>
+        {{--<td>{{($pets->currentPage() -1) * 20 + $key+1}}</td>--}}
         <td>{{$pet->pid}}</td>
         <td>{{$pet->patient_name}}</td>
         <td>{{$pet->patient_id}}</td>
