@@ -191,7 +191,7 @@
         <td><div style="max-height:100px;overflow: scroll;"> {!! $pet->content !!} </div></td>
         <td>{{$pet->created_at}}</td>
         <td>
-            <a href="preview?pid={{$pet->pid}}"><button style="cursor: pointer;background:dodgerblue;color:#fff;border:1px solid dodgerblue;">查看</button></a>
+            <a href="preview?pid={{$pet->pid}}" target="_blank"><button style="cursor: pointer;background:dodgerblue;color:#fff;border:1px solid dodgerblue;">查看</button></a>
             <button onclick="deletePet({{$pet->pid}})" style="background:red;color:#fff;border:1px solid red;">删除</button>
         </td>
     </tr>
