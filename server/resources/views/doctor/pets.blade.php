@@ -127,6 +127,14 @@
         }
         .clear{
             clear: both;
+
+        }
+        td{
+            text-align: center;
+        }
+        
+        td div{
+            text-align: left;
         }
 
     </style>
@@ -163,21 +171,30 @@
 </div>
 <table width="90%" id="mytab"  border="1" class="t1">
     <thead>
-    <th >#</th>
-    <th >PET号</th>
-    <th >内容</th>
-    <th >创建时间</th>
-    <th>诊断记录</th>
-    <th >操作</th>
+        <th>#</th>
+        <th>PET号</th>
+        <th>姓名</th>
+        <th>身份证</th>
+        <th>诊断时间</th>
+        <th>当前诊断</th>
+        <th>详细</th>
+        <th>采集时间</th>
+        <th>操作</th>
     </thead>
     @foreach($pets as $key => $pet)
     <tr class="a1">
         <td>{{($pets->currentPage() -1) * 20 + $key+1}}</td>
         <td>{{$pet->pid}}</td>
-        <td><div style="padding:5px;">{!! $pet->content !!}</div></td>
+        <td>{{$pet->patient_name}}</td>
+        <td>{{$pet->patient_id}}</td>
+        <td>{{$pet->pet_date}}</td>
+        <td>{{$pet->cure_obj}}</td>
+        <td><div style="max-height:100px;overflow: scroll;"> {!! $pet->content !!} </div></td>
         <td>{{$pet->created_at}}</td>
-        <td><a href="preview?pid={{$pet->pid}}">查看</a></td>
-        <td><button onclick="deletePet({{$pet->pid}})">删除</button></td>
+        <td>
+            <a href="preview?pid={{$pet->pid}}"><button style="cursor: pointer;background:dodgerblue;color:#fff;border:1px solid dodgerblue;">查看</button></a>
+            <button onclick="deletePet({{$pet->pid}})" style="background:red;color:#fff;border:1px solid red;">删除</button>
+        </td>
     </tr>
     @endforeach
 </table>
