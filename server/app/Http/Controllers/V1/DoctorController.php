@@ -99,7 +99,7 @@ class DoctorController extends Controller
                 $info = explode(":",$singleInfo);
                 switch (trim($info[0])){
                     case "姓名": $data['patient_name']        = $info[1];break;
-                    case "身份证号码":$data['patient_code']    = $info[1];break;
+                    case "身份证号码":$data['patient_id']    = $info[1];break;
                     case "填写日期": $data['pet_date']         = $info[1];break;
                     case "当前诊断": $data['cure_obj']         = $info[1];break;
                 }
