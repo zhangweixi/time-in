@@ -87,13 +87,26 @@ class DoctorController extends Controller
         $imgpath    = storage_path("app/".$img->img);
         $petInfo    = $this->xfyun($imgpath);
         //$petInfo    = $this->parse_result();
+        $data       = [
+            'pid'=>$pid,
+            "created_at"=>now()
+        ];
 
         if($petInfo){
-            $petInfo    = implode("\n",$petInfo);
-        }else{
-            $petInfo    = "";
+            //提取出 填写日期，姓名，省份正号码，当前诊断
+            foreach($petInfo as $singleInfo)
+            {
+                $info = explode(":",$singleInfo);
+                switch (trim($info[0])){
+                    case "姓名": $data['patient_name']        = $info[1];break;
+                    case "省份证号码":$data['patient_code']    = $info[1];break;
+                    case "填写日期": $data['pet_date']         = $info[1];break;
+                    case "当前诊断": $data['cure_obj']         = $info[1];break;
+                }
+            }
+            $data['content'] = implode("\n",$petInfo);
         }
-        DB::table('doc_pet')->insertGetId(['pid'=>$pid,'content'=>$petInfo,"created_at"=>now()]);
+        DB::table('doc_pet')->insertGetId();
         return \API::add('pid',$pid)->send();
     }
 
