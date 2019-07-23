@@ -106,7 +106,7 @@ class DoctorController extends Controller
             }
             $data['content'] = implode("\n",$petInfo);
         }
-        DB::table('doc_pet')->insertGetId();
+        DB::table('doc_pet')->insertGetId($data);
         return \API::add('pid',$pid)->send();
     }
 
