@@ -4,3 +4,4 @@ client/unpackage/
 server/public/logs/
 server/bootstrap/cache/.gitignore
 server/app/Console/Commands/app.php
+server/public/doctor/

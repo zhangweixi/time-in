@@ -4,13 +4,14 @@
 	
 	export default {
 		onLaunch: function() {
+			
 			console.log('App Launch')
 			//return ;
 			//check this weixin mini app whether login
 			// #ifdef MP-WEIXIN
-			
+			return;
 			if(!common.user.checkLogin()){
-
+				
 				uni.login({
 					provider:"weixin",
 					success:(res)=>{

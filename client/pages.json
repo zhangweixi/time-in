@@ -1,6 +1,19 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-	
+		{
+			"path":"pages/doctor/index/index",
+			"style":{
+				"navigationBarTitleText":"信息采集",
+				"h5":{"titleNView":false}
+			}
+		},
+		{
+		    "path" : "pages/doctor/search/search",
+		    "style" : {
+				"navigationBarTitleText":"信息检索",
+				"enablePullDownRefresh":true
+			}
+		},
 		{
 			"path": "pages/index/index",
 			"style":{
@@ -58,6 +71,10 @@
 				}
 			}
 		}
+        ,{
+            "path" : "pages/doctor/pdf/pdf",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -65,29 +82,41 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"tabBar": {
+	"tabBar1": {
 		"borderStyle": "black",
 		"backgroundColor": "#eee",
 		"color": "#8a8a8a",
 		"selectedColor": "#1296db",
-		"list": [{
-				"text":"题",
-				"pagePath": "pages/ti/list/list",
-				"iconPath": "static/img/tabbar/ti.png",
-				"selectedIconPath": "static/img/tabbar/tiactive.png"
-			},{
-				"text":"时",
-				"pagePath": "pages/index/index",
-				"iconPath": "static/img/tabbar/time.png",
-				"selectedIconPath": "static/img/tabbar/timeactive.png"
-			},
-			{
-				"text":"印",
-				"pagePath": "pages/history/history",
-				"iconPath": "static/img/tabbar/book.png",
-				"selectedIconPath": "static/img/tabbar/bookactive.png"
-			}
-			
-		]
+		"list": [
+			// {
+			// 	"text":"题",
+			// 	"pagePath": "pages/ti/list/list",
+			// 	"iconPath": "static/img/tabbar/ti.png",
+			// 	"selectedIconPath": "static/img/tabbar/tiactive.png"
+			// },
+			// {
+			// 	"text":"时",
+			// 	"pagePath": "pages/index/index",
+			// 	"iconPath": "static/img/tabbar/time.png",
+			// 	"selectedIconPath": "static/img/tabbar/timeactive.png"
+			// },
+			// {
+			// 	"text":"印",
+			// 	"pagePath": "pages/history/history",
+			// 	"iconPath": "static/img/tabbar/book.png",
+			// 	"selectedIconPath": "static/img/tabbar/bookactive.png"
+			// },
+			// {
+			// 	"text":"采集",
+			// 	"pagePath":"pages/doctor/index/index",
+			// 	"iconPath":"static/img/tabbar/book.png",
+			// 	"selectedIconPath":"static/img/tabbar/bookactive.png"
+			// },{
+			// 	"text":"查阅",
+			// 	"pagePath":"pages/doctor/search/search",
+			// 	"iconPath":"static/img/tabbar/book.png",
+			// 	"selectedIconPath":"static/img/tabbar/bookactive.png"
+			// }
+		] 
 	}
 }
